@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>reload files</title>
+    <script src="search.js" type="module"></script>
+    <script src="wallpaper.js" type="module"></script>
+    <script src=".\library\cookies.js"></script>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            animation: body 13s linear infinite;
+            background-image: linear-gradient(315deg, pink, dodgerblue, pink);
+            background-size: 100% 100%;
+        }
+
+        span {
+            width: 100%;
+            font-size: 10vh;
+            transform: rotate(90deg);
+            text-align: center;
+            color: dodgerblue;
+            text-shadow: none;
+            animation: span 11s ease-in-out infinite alternate;
+        }
+
+        h1 {
+            font-size: 8vh;
+        }
+
+        @keyframes body {
+            0% {
+                transform: rotate3d(0, 0, 0, 1turn);
+                text-shadow: 3px 3px 0 red;
+                /*background-position: 0% 0%;*/
+                color: pink;
+            }
+
+            25% {
+                text-shadow: 3px -3px 0 rgb(0, 255, 0);
+            }
+
+            50% {
+                transform: rotate3d(1, 1, 1, .5turn);
+                text-shadow: -3px -3px 0 blue;
+                /*background-position: 100% 100%;*/
+                color: dodgerblue;
+            }
+
+            75% {
+                text-shadow: -3px 3px 0 yellow;
+            }
+
+            100% {
+                transform: rotate3d(1, 1, 1, 1turn);
+                text-shadow: 3px 3px 0 red;
+                /*background-position: 0% 0%;*/
+                color: pink;
+            }
+        }
+
+        @keyframes span {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ctrl + F5</h1>
+    <span>=</span>
+    <h1>Reloaded!</h1>
+</body>
+
+</html>
