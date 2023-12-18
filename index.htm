@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>C4起始页</title>
+    <!--cdn-->
+    <!--bootstarp-->
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.min.css"
+        rel="stylesheet">
+    <link href="https://cdn.staticfile.org/bootstrap-icons/1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <script defer src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.min.js"></script>
+    <script>
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    </script>
+    <!--/bootstarp-->
+    <!--jquery&ui-->
+    <link href="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/themes/base/theme.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <!--/jquery&ui-->
+    <!--/cdn-->
+</head>
+
+<body>
+    <div id="bg"></div>
+    <div class="input-group shadow" id="searchbar">
+        <label class="input-group-text" for="stool">选择搜索引擎:</label>
+        <select class="form-select" id="stool">
+            <option value="https://www.google.com/search?q=">Google</option>
+            <option selected value="https://cn.bing.com/search?q=">Bing</option>
+            <option value="https://www.baidu.com/s?wd=">Baidu</option>
+        </select>
+        <label class="input-group-text" for="starget">选择打开方式:</label>
+        <select class="form-select" id="starget">
+            <option value="_blank">&#xF6D1;在新标签页中打开</option>
+            <option value="_self">&#xF620;在当前标签页中打开</option>
+            <!--<option value="_parent">在父窗口中打开</option>-->
+            <!--<option value="_top">在整个窗口中打开</option>-->
+        </select>
+        <div>
+            <label for="searchTerm">搜索内容:</label>
+            <input class="form-control" id="searchTerm" placeholder="Search..." />
+        </div>
+
+
+        <!-- 添加搜索按钮,点击时打开选定的搜索引擎 -->
+        <button class="sbutton btn btn-outline-secondary ripple-btn" type="button">&#xF52A;</button>
+        <!--<script src=".\library\cookie.js"></script>-->
+        <script src=".\search.js" type="module"></script>
+    </div>
+
+    <!-- settings -->
+
+    <div id="settings">
+        <button title="settings" type="button" data-bs-toggle="modal" class="btn bi bi-sliders"
+            data-bs-target="#settingsBox"></button>
+        <!-- settings-box -->
+        <div class="modal" id="settingsBox">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- 模态框头部 -->
+                    <div class="modal-header">
+                        <h1 class="modal-title">Settings</h1>
+                        <!--导航栏-->
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- 模态框内容 -->
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="bg-light">
+                                    <nav class="navbar">
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Link 1</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Link 2</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Link 3</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </td>
+                                <td>
+                                    <div class="modal-body">
+                                        <h2>Background</h2>
+                                        <form id="bgSetBox">
+                                            <label><input type="radio" name="bg-option" value="color" checked>使用颜色<input
+                                                    type="color" id="color-input"
+                                                    class="form-control form-control-color"></label><br><br>
+                                            <label><input type="radio" name="bg-option" value="image">使用图片文件<span> (It
+                                                    sometimes dosen't work. You'd better use image with
+                                                    href.)</span><input type="file" id="file-input"
+                                                    class="form-control"></label><br><br>
+                                            <label><input type="radio" name="bg-option" value="href">使用图片链接<input
+                                                    type="text" id="href-input" class="form-control"></label><br><br>
+                                            <button type="button" id="set-bg-btn"
+                                                class="btn btn-outline-primary">应用Background</button>
+                                        </form>
+                                        <script src="wallpaper.js" type="module"></script>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- 模态框底部 -->
+                    <div class="modal-footer d-none">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
