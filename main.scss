@@ -70,37 +70,38 @@ body {
         z-index: 6;
     }
 
-    >div {
+
+    text-wrap: nowrap;
+    max-width: calc(80vw - 214px);
+    height: 38px;
+    width: max-content;
+    margin-right: 10px;
+
+    >#searchTerm {
         text-wrap: nowrap;
-        max-width: calc(80vw - 214px);
-        height: 38px;
-        width: max-content;
-        margin-right: 10px;
-
-        >#searchTerm {
-            text-wrap: nowrap;
-            height: 100%;
-            width: 100px;
-            overflow: hidden;
-            display: inline-block;
-            border-right: none;
-            border-top: none;
-            border-bottom: none;
-            border-radius: 0;
-            max-width: calc(80vw - 218px);
-        }
-
-        >label {
-            visibility: hidden;
-            min-width: 100px;
-            padding: 15px;
-            width: max-content;
-            height: 0;
-            position: absolute;
-        }
-
-
+        height: 100%;
+        width: 100px;
+        overflow: hidden;
+        display: inline-block;
+        border-right: none;
+        border-top: none;
+        border-bottom: none;
+        border-radius: 0;
+        max-width: calc(80vw - 218px);
     }
+
+    >label[for="searchTerm"] {
+        display: block;
+        visibility: hidden;
+        min-width: 100px;
+        padding: 15px;
+        width: max-content;
+        height: 0;
+        position: absolute;
+    }
+
+
+
 
     >#stool {
         border-left: none;
