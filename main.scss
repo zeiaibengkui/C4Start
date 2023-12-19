@@ -1,0 +1,128 @@
+:root {
+    --border-radius: 20px;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#bg {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-size: cover;
+}
+
+#bgiframe {
+    height: inherit;
+    width: inherit;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
+
+
+#searchbar {
+    max-width: calc(80vw - 0px);
+    width: auto;
+    border-radius: var(--border-radius) !important;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    background: white;
+    opacity: .7;
+    transition: opacity .2s;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    >#starget {
+        max-width: 67px !important;
+    }
+
+    >select {
+        flex: 0 0 auto;
+        width: min-content;
+        font-family: bootstrap-icons, sans-serif, dengxian, fangsong;
+        border-top: none;
+        border-bottom: none;
+        background-color: transparent;
+    }
+
+    >.sbutton {
+        border-radius: 19px !important;
+        width: 38px;
+        height: 38px;
+        font-family: bootstrap-icons, "sans-serif" !important;
+        padding: 0 !important;
+        z-index: 6;
+    }
+
+    >div {
+        text-wrap: nowrap;
+        max-width: calc(80vw - 214px);
+        height: 38px;
+        width: max-content;
+        margin-right: 10px;
+
+        >#searchTerm {
+            text-wrap: nowrap;
+            height: 100%;
+            width: 100px;
+            overflow: hidden;
+            display: inline-block;
+            border-right: none;
+            border-top: none;
+            border-bottom: none;
+            border-radius: 0;
+            max-width: calc(80vw - 218px);
+        }
+
+        >label {
+            visibility: hidden;
+            min-width: 100px;
+            padding: 15px;
+            width: max-content;
+            height: 0;
+            position: absolute;
+        }
+
+
+    }
+
+    >#stool {
+        border-left: none;
+        border-top-left-radius: var(--border-radius);
+        border-bottom-left-radius: var(--border-radius);
+    }
+
+    >label {
+        display: none;
+    }
+}
+
+
+
+
+div#settings {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+
+    &>button[title="settings"] {
+        float: right;
+        text-shadow: 0 0 2px white;
+    }
+}
