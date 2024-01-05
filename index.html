@@ -7,6 +7,21 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>C4起始页</title>
     <!--cdn-->
+    <!--local-->
+    <style>
+        /*
+        @import url(../library/bootstrap.css);
+        @import url(../library/bootstrap-icons-1.11.0/bootstrap-icons.css);
+        @import url(../library/jquery-ui.css);
+        @import url(../library/theme.css);
+        */
+    </style>
+    <!-- <script src="../library/bootstrap.js"></script>
+    <script src="../library/jquery.js"></script>
+    <script src="../library/jquery-ui.js"></script>
+    <script src="../library/localforage.js" type="module"></script> -->
+    <!--/local-->
+
     <!--bootstarp-->
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.min.css"
         rel="stylesheet">
@@ -28,7 +43,7 @@
 
 <body>
     <div id="bg"></div>
-    <div class="input-group shadow" id="searchbar">
+    <div class="input-group shadow" id="searchbar" action="">
         <label class="input-group-text" for="stool">选择搜索引擎:</label>
         <select class="form-select" id="stool">
             <option value="https://www.google.com/search?q=">Google</option>
@@ -44,17 +59,12 @@
         </select>
         <label for="searchTerm">搜索内容:</label>
         <input class="form-control" id="searchTerm" placeholder="Search..." />
-
-
-
-        <!-- 添加搜索按钮,点击时打开选定的搜索引擎 -->
-        <button class="sbutton btn btn-outline-secondary ripple-btn" type="button">&#xF52A;</button>
+        <button class="sbutton btn btn-outline-secondary ripple-btn" type="submit">&#xF52A;</button>
         <!--<script src=".\library\cookie.js"></script>-->
         <script src=".\search.js" type="module"></script>
     </div>
 
     <!-- settings -->
-
     <div id="settings">
         <button title="settings" type="button" data-bs-toggle="modal" class="btn bi bi-sliders"
             data-bs-target="#settingsBox"></button>
@@ -68,7 +78,7 @@
                         <h1 class="modal-title">Settings</h1>
                         <!--导航栏-->
 
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        <button title="close" type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
 
                     <!-- 模态框内容 -->
@@ -96,17 +106,20 @@
                                         <form id="bgSetBox">
                                             <label><input type="radio" name="bg-option" value="color" checked>使用颜色<input
                                                     type="color" id="color-input"
-                                                    class="form-control form-control-color"></label><br><br>
+                                                    class="form-control form-control-color"></label>
+                                                    <br><br>
                                             <label><input type="radio" name="bg-option" value="image">使用图片文件<span> (It
                                                     sometimes dosen't work. You'd better use image with
                                                     href.)</span><input type="file" id="file-input"
                                                     class="form-control"></label><br><br>
                                             <label><input type="radio" name="bg-option" value="href">使用图片链接<input
-                                                    type="text" id="href-input" class="form-control"></label><br><br>
+                                                    type="text" id="href-input" class="form-control"></label>
+                                                    <br><br>
                                             <button type="button" id="set-bg-btn"
                                                 class="btn btn-outline-primary">应用Background</button>
+                                                <span id="bg-success"></span>
                                         </form>
-                                        <script src="wallpaper.js" type="module"></script>
+                                        <script src="wallpaper.js"></script>
                                     </div>
                                 </td>
                             </tr>
