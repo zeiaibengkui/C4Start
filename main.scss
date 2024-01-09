@@ -119,6 +119,11 @@ body {
     top: 0;
     width: 100vw;
 
+    >#setingsBox {
+        max-height: 45vh;
+        border-top-left-radius: var(--bs-modal-inner-border-radius);
+    }
+
     >button[title="settings"] {
         float: right;
         text-shadow: 0 0 2px white;
@@ -127,4 +132,7 @@ body {
      #bg-success {
         margin-left: 5em;
     }
+     ul>li {
+        width: max-content;
+     }
 }

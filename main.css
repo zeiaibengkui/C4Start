@@ -105,10 +105,18 @@ body {
   top: 0;
   width: 100vw;
 }
+#settings > #setingsBox {
+  max-height: 45vh;
+  border-top-left-radius: var(--bs-modal-inner-border-radius);
+}
 #settings > button[title=settings] {
   float: right;
   text-shadow: 0 0 2px white;
 }
 #settings #bg-success {
   margin-left: 5em;
+}
+#settings ul > li {
+  width: -moz-max-content;
+  width: max-content;
 }/*# sourceMappingURL=main.css.map */
