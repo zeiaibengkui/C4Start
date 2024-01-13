@@ -6,22 +6,7 @@
     <link href="main.css" rel="stylesheet" type="text/css" />
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>C4起始页</title>
-    <!--cdn-->
-    <!--local-->
-    <style>
-        /*
-        @import url(../library/bootstrap.css);
-        @import url(../library/bootstrap-icons-1.11.0/bootstrap-icons.css);
-        @import url(../library/jquery-ui.css);
-        @import url(../library/theme.css);
-        */
-    </style>
-    <!-- <script src="../library/bootstrap.js"></script>
-    <script src="../library/jquery.js"></script>
-    <script src="../library/jquery-ui.js"></script>
-    <script src="../library/localforage.js" type="module"></script> -->
-    <!--/local-->
-
+    <!--START cdn-->
     <!--bootstarp-->
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.min.css"
         rel="stylesheet">
@@ -38,7 +23,11 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <!--/jquery&ui-->
-    <!--/cdn-->
+    <!--react-->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!--/react-->
+    <!--END cdn-->
 </head>
 
 <body>
@@ -107,17 +96,17 @@
                                             <label><input type="radio" name="bg-option" value="color" checked>使用颜色<input
                                                     type="color" id="color-input"
                                                     class="form-control form-control-color"></label>
-                                                    <br><br>
+                                            <br><br>
                                             <label><input type="radio" name="bg-option" value="image">使用图片文件<span> (It
                                                     sometimes dosen't work. You'd better use image with
                                                     href.)</span><input type="file" id="file-input"
                                                     class="form-control"></label><br><br>
                                             <label><input type="radio" name="bg-option" value="href">使用图片链接<input
                                                     type="text" id="href-input" class="form-control"></label>
-                                                    <br><br>
+                                            <br><br>
                                             <button type="button" id="set-bg-btn"
                                                 class="btn btn-outline-primary">应用Background</button>
-                                                <span id="bg-success"></span>
+                                            <span id="bg-success"></span>
                                         </form>
                                         <script src="wallpaper.js"></script>
                                     </div>
