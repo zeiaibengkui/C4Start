@@ -35,40 +35,42 @@ body {
 
 #searchbar {
   max-width: calc(80vw - 214px);
-  min-width: 308px;
+  min-width: 340px;
   width: auto;
-  height: auto;
+  height: 40px;
   border-radius: var(--border-radius) !important;
   border: var(--bs-border-width) solid var(--bs-border-color);
   background: white;
   opacity: 0.7;
   transition: opacity 0.2s;
-  text-wrap: nowrap;
+  font-family: bootstrap-icons, "sans-serif" !important;
 }
 #searchbar:hover {
   opacity: 1;
 }
 #searchbar > #starget {
   max-width: 67px !important;
+  font-family: bootstarp-icons, sans-serif;
 }
-#searchbar > select {
-  flex: 0 0 auto;
+#searchbar #s-engine {
   width: -moz-min-content;
   width: min-content;
   font-family: bootstrap-icons, sans-serif, dengxian, fangsong;
   border-top: none;
   border-bottom: none;
   background-color: transparent;
+  border-radius: 0;
+  border-bottom-left-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
 }
 #searchbar > .sbutton {
   border-radius: 19px !important;
   width: 38px;
   height: 38px;
-  font-family: bootstrap-icons, "sans-serif" !important;
   padding: 0 !important;
   z-index: 6;
 }
-#searchbar > input#searchTerm {
+#searchbar > #searchTerm {
   text-wrap: nowrap;
   /* height: 100%; */
   min-width: 100px;
@@ -90,11 +92,6 @@ body {
   width: max-content;
   height: 0;
   position: absolute;
-}
-#searchbar > #stool {
-  border-left: none;
-  border-top-left-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
 }
 #searchbar > label:not([for=searchTerm]) {
   display: none;
@@ -119,4 +116,7 @@ body {
 #settings ul > li {
   width: -moz-max-content;
   width: max-content;
+}
+#settings #searchSetBox {
+  display: flex;
 }/*# sourceMappingURL=main.css.map */

@@ -8,10 +8,9 @@
     <title>C4起始页</title>
     <!--START cdn-->
     <!--bootstarp-->
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.min.css"
-        rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.staticfile.org/bootstrap-icons/1.11.2/font/bootstrap-icons.css" rel="stylesheet">
-    <script defer src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.min.js"></script>
+    <script defer src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
     <script>
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
@@ -23,22 +22,18 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <!--/jquery&ui-->
-    <!--react-->
-    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
-    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
-    <!--/react-->
     <!--END cdn-->
 </head>
 
 <body>
     <div id="bg"></div>
-    <div class="input-group shadow" id="searchbar" action="">
-        <label class="input-group-text" for="stool">选择搜索引擎:</label>
-        <select class="form-select" id="stool">
-            <option value="https://www.google.com/search?q=">Google</option>
-            <option selected value="https://cn.bing.com/search?q=">Bing</option>
-            <option value="https://www.baidu.com/s?wd=">Baidu</option>
-        </select>
+    <div class="input-group shadow" id="searchbar">
+        <button type="button" class="btn btn-light dropdown-toggle" id="s-engine" data-bs-toggle="dropdown">
+            选择搜索引擎
+        </button>
+        <div class="dropdown">
+            <ul class="dropdown-menu" id="searchEngines"><!--wait for js--></ul>
+        </div>
         <label class="input-group-text" for="starget">选择打开方式:</label>
         <select class="form-select" id="starget">
             <option value="_blank">&#xF6D1;在新标签页中打开</option>
@@ -48,7 +43,7 @@
         </select>
         <label for="searchTerm">搜索内容:</label>
         <input class="form-control" id="searchTerm" placeholder="Search..." />
-        <button class="sbutton btn btn-outline-secondary ripple-btn" type="submit">&#xF52A;</button>
+        <button class="sbutton btn btn-outline-secondary" type="submit">&#xF52A;</button>
         <!--<script src=".\library\cookie.js"></script>-->
         <script src=".\search.js" type="module"></script>
     </div>
@@ -107,6 +102,11 @@
                                             <button type="button" id="set-bg-btn"
                                                 class="btn btn-outline-primary">应用Background</button>
                                             <span id="bg-success"></span>
+                                        </form>
+                                        <h2>Search</h2>
+                                        <form id="searchSetBox">
+                                            <div id="searchSet-Names"></div>
+                                            <div id="searchSet-Engines"></div>
                                         </form>
                                         <script src="wallpaper.js"></script>
                                     </div>
