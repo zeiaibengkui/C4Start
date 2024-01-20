@@ -20,6 +20,7 @@ if (!sEngines) {
     var selectedEngine = 0
 }
 document.getElementById('s-engine').innerHTML = sEngineNames[selectedEngine];//button
+
 for (let i = 0; i < sEngines.length; i++) {
     let enginLi = document.createElement("li");
     let enginLitext = document.createTextNode(sEngineNames[i]);
@@ -50,7 +51,7 @@ document.addEventListener("click", (e) => {
 });
 
 function search() {
-    console.log("searh() 已触发")
+    //console.log("searh() 已触发")
     let searchTerm = document.getElementById('searchTerm').value;
     if (searchTerm) {
 
@@ -64,7 +65,8 @@ function search() {
 
         // 创建完整的搜索URL
 
-        let searchURL = sEngines[selectedEngine].replace("%wd%", encodeURIComponent(searchTerm));
+        let searchURL = sEngines[selectedEngine].replace("%sw%", encodeURIComponent(searchTerm));
+        //console.log(searchURL);
 
         // 在选定的打开方式下打开搜索URL
         window.open(searchURL, selectedTarget);
