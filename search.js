@@ -20,15 +20,24 @@ if (!sEngines) {
     var selectedEngine = 0
 }
 document.getElementById('s-engine').innerHTML = sEngineNames[selectedEngine];//button
+document.getElementById("searchSet-Names").innerHTML = localStorage.getItem("sEngineNames");
+document.getElementById("searchSet-Engines").innerHTML = localStorage.getItem("sEngines");
+
+//应用Engines
+document.getElementById("searchSet-btn").addEventListener("click", () => {
+    sEngineNames = JSON.parse(document.getElementById("searchSet-Names").value);
+    sEngines = JSON.parse(document.getElementById("searchSet-Engines").value);
+    search(true);
+})
 
 for (let i = 0; i < sEngines.length; i++) {
     let enginLi = document.createElement("li");
     let enginLitext = document.createTextNode(sEngineNames[i]);
     enginLi.appendChild(enginLitext);
     enginLi.setAttribute("data-num", (i + ""));
-    enginLi.setAttribute("class","dropdown-item");
+    enginLi.setAttribute("class", "dropdown-item");
     SearchEnginesBox.appendChild(enginLi);
-    console.log(enginLi);
+    //console.log(enginLi);
 }
 
 
@@ -50,7 +59,8 @@ document.addEventListener("click", (e) => {
     }
 });
 
-function search() {
+
+function search(isPreparing) {
     //console.log("searh() 已触发")
     let searchTerm = document.getElementById('searchTerm').value;
     if (searchTerm) {
@@ -69,10 +79,16 @@ function search() {
         //console.log(searchURL);
 
         // 在选定的打开方式下打开搜索URL
-        window.open(searchURL, selectedTarget);
+        if (!isPreparing) {
+            window.open(searchURL, selectedTarget);
+        }
+        
 
     } else {
-        window.alert("请输入搜索内容!")
+        if (!isPreparing) {
+            window.alert("请输入搜索内容!");
+        }
+        
     }
 }
 
@@ -98,4 +114,4 @@ searchTerm.addEventListener("input", (() => {
     searchTerm.style.width = searchTermWdith + "px";
 }))
 
-
+search(true)

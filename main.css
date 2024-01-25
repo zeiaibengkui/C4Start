@@ -102,6 +102,9 @@ body {
   top: 0;
   width: 100vw;
 }
+#settings > form {
+  margin-bottom: 20px;
+}
 #settings > #setingsBox {
   max-height: 45vh;
   border-top-left-radius: var(--bs-modal-inner-border-radius);
@@ -119,4 +122,13 @@ body {
 }
 #settings #searchSetBox {
   display: flex;
+}
+#settings #searchSetBox td label {
+  width: 100%;
+}
+#settings #searchSetBox td label textarea {
+  width: 100%;
+}
+#settings #searchSetBox #searchSet-Names {
+  min-width: 111px;
 }/*# sourceMappingURL=main.css.map */

@@ -45,7 +45,7 @@
         <input class="form-control" id="searchTerm" placeholder="Search..." />
         <button class="sbutton btn btn-outline-secondary" type="submit">&#xF52A;</button>
         <!--<script src=".\library\cookie.js"></script>-->
-        <script src=".\search.js" type="module"></script>
+
     </div>
 
     <!-- settings -->
@@ -104,10 +104,30 @@
                                             <span id="bg-success"></span>
                                         </form>
                                         <h2>Search</h2>
-                                        <form id="searchSetBox">
-                                            <div id="searchSet-Names"></div>
-                                            <div id="searchSet-Engines"></div>
-                                        </form>
+                                        <table id="searchSetBox">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="col-3">
+                                                        <label>Engine names:
+                                                            <br>
+                                                            <textarea class="form-control" id="searchSet-Names"></textarea>
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <label>Engine urls:<br>
+                                                            <textarea class="form-control" id="searchSet-Engines"></textarea>
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <button class="btn btn-outline-primary" type="button"
+                                                            id="searchSet-btn">应用Search</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <script src=".\search.js" type="module"></script>
                                         <script src="wallpaper.js"></script>
                                     </div>
                                 </td>

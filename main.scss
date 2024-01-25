@@ -113,6 +113,10 @@ body {
     top: 0;
     width: 100vw;
 
+    >form {
+        margin-bottom: 20px;
+    }
+
     >#setingsBox {
         max-height: 45vh;
         border-top-left-radius: var(--bs-modal-inner-border-radius);
@@ -131,8 +135,22 @@ body {
         width: max-content;
     }
 
-    #searchSetBox{
+    #searchSetBox {
         display: flex;
-        
+
+        td {
+            label {
+                width: 100%;
+
+                textarea {
+                    width: 100%;
+                }
+            }
+
+        }
+
+        #searchSet-Names {
+            min-width: 111px;
+        }
     }
 }
