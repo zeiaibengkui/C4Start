@@ -22,18 +22,12 @@ body {
     background-size: cover;
 }
 
-#bgiframe {
-    height: inherit;
-    width: inherit;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    user-select: none;
-    -webkit-user-select: none;
+#rcMenu{ //right click menu
+    width: max-content;
+    max-width: 100px;
+    position: absolute;
+    display: none;
 }
-
-
-
 
 #searchbar {
     max-width: calc(80vw - 214px);
@@ -69,7 +63,8 @@ body {
     }
 
     >.sbutton {
-        border-radius: 19px !important;
+        border-radius: 0 19px 19px 0  !important;
+        shape-outside: circle(50%);
         width: 38px;
         height: 38px;
         padding: 0 !important;
@@ -82,11 +77,11 @@ body {
         min-width: 100px;
         width: 100px;
         overflow: hidden;
-        display: inline-block;
-        border-right: none;
-        border-top: none;
-        border-bottom: none;
-        border-radius: 0;
+        // display: inline-block;
+        // border-right: none;
+        // border-top: none;
+        // border-bottom: none;
+        // border-radius: 0;
         max-width: calc(80vw - 218px);
     }
 
@@ -131,26 +126,70 @@ body {
         margin-left: 5em;
     }
 
-    ul>li {
+    span.modal-body {
         width: max-content;
     }
 
-    #searchSetBox {
-        display: flex;
+    #settingsBox>div.modal-dialog {
+        width: max-content;
 
-        td {
-            label {
+        
+
+        >div.modal-content {
+            max-width: 80vw;
+            max-height: calc(100vh - (var(--bs-modal-margin) * 2));
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-color: var(--bs-primary) rgba(255, 255, 255, 0);
+            scrollbar-width: thin;
+
+            >.modal-header{
+                position: sticky;
+                bottom: 0;
                 width: 100%;
+                background-color: #fff;
+                box-shadow: rgb(0, 0, 0,.5) 0 0px 5px 5px;
+            }
 
-                textarea {
-                    width: 100%;
+            >div.row {
+                margin-left: 0;
+
+                nav {
+                    width: max-content;
+
+                    ul {
+                        width: max-content;
+
+                        li {
+                            width: max-content;
+                        }
+                    }
                 }
             }
 
-        }
+            >.modal-body {
+                #searchSetBox {
+                    display: flex;
 
-        #searchSet-Names {
-            min-width: 111px;
+                    td>label {
+                        width: 100%;
+
+                        textarea {
+                            width: 100%;
+                        }
+                    }
+
+
+
+                    #searchSet-Names {
+                        min-width: 111px;
+                    }
+                }
+            }
         }
     }
+
+
+
+
 }

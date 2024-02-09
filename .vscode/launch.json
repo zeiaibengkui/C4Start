@@ -8,7 +8,7 @@
             "name": "Edge",
             "request": "launch",
             "type": "msedge",
-            "url": "http://localhost:8008/C4Start/",
+            "url": "http://127.0.0.1:5758/index.html",
             "webRoot": "${workspaceFolder}"
         },
         {
@@ -16,7 +16,7 @@
             "type": "firefox",
             "request": "launch",
             "reAttach": true,
-            "url": "http://localhost:8008/C4Start/",
+            "url": "http://127.0.0.1:5758/index.html",
             "webRoot": "${workspaceFolder}"
         }
     ]

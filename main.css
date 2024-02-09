@@ -22,15 +22,12 @@ body {
   background-size: cover;
 }
 
-#bgiframe {
-  height: inherit;
-  width: inherit;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  -moz-user-select: none;
-       user-select: none;
-  -webkit-user-select: none;
+#rcMenu {
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 100px;
+  position: absolute;
+  display: none;
 }
 
 #searchbar {
@@ -64,7 +61,8 @@ body {
   border-top-left-radius: var(--border-radius);
 }
 #searchbar > .sbutton {
-  border-radius: 19px !important;
+  border-radius: 0 19px 19px 0 !important;
+  shape-outside: circle(50%);
   width: 38px;
   height: 38px;
   padding: 0 !important;
@@ -76,11 +74,6 @@ body {
   min-width: 100px;
   width: 100px;
   overflow: hidden;
-  display: inline-block;
-  border-right: none;
-  border-top: none;
-  border-bottom: none;
-  border-radius: 0;
   max-width: calc(80vw - 218px);
 }
 #searchbar > label[for=searchTerm] {
@@ -116,19 +109,53 @@ body {
 #settings #bg-success {
   margin-left: 5em;
 }
-#settings ul > li {
+#settings span.modal-body {
   width: -moz-max-content;
   width: max-content;
 }
-#settings #searchSetBox {
+#settings #settingsBox > div.modal-dialog {
+  width: -moz-max-content;
+  width: max-content;
+}
+#settings #settingsBox > div.modal-dialog > div.modal-content {
+  max-width: 80vw;
+  max-height: calc(100vh - var(--bs-modal-margin) * 2);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: var(--bs-primary) rgba(255, 255, 255, 0);
+  scrollbar-width: thin;
+}
+#settings #settingsBox > div.modal-dialog > div.modal-content > .modal-header {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0px 5px 5px;
+}
+#settings #settingsBox > div.modal-dialog > div.modal-content > div.row {
+  margin-left: 0;
+}
+#settings #settingsBox > div.modal-dialog > div.modal-content > div.row nav {
+  width: -moz-max-content;
+  width: max-content;
+}
+#settings #settingsBox > div.modal-dialog > div.modal-content > div.row nav ul {
+  width: -moz-max-content;
+  width: max-content;
+}
+#settings #settingsBox > div.modal-dialog > div.modal-content > div.row nav ul li {
+  width: -moz-max-content;
+  width: max-content;
+}
+#settings #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox {
   display: flex;
 }
-#settings #searchSetBox td label {
+#settings #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox td > label {
   width: 100%;
 }
-#settings #searchSetBox td label textarea {
+#settings #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox td > label textarea {
   width: 100%;
 }
-#settings #searchSetBox #searchSet-Names {
+#settings #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox #searchSet-Names {
   min-width: 111px;
 }/*# sourceMappingURL=main.css.map */

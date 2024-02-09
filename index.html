@@ -9,26 +9,25 @@
     <!--START cdn-->
     <!--bootstarp-->
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.staticfile.org/bootstrap-icons/1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <script defer src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
-    </script>
-    <!--/bootstarp-->
+
     <!--jquery&ui-->
     <link href="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" rel="stylesheet">
     <link href="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/themes/base/theme.min.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <!--/jquery&ui-->
+
+    <!--localforage-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/localforage/1.10.0/localforage.js"></script>
+    <script>localforage.setDriver([localforage.LOCALSTORAGE, localforage.INDEXEDDB, localforage.WEBSQL]);</script>
     <!--END cdn-->
 </head>
 
 <body>
     <div id="bg"></div>
     <div class="input-group shadow" id="searchbar">
-        <button type="button" class="btn btn-light dropdown-toggle" id="s-engine" data-bs-toggle="dropdown">
+        <button type="button" class="btn dropdown-toggle" id="s-engine" data-bs-toggle="dropdown">
             选择搜索引擎
         </button>
         <div class="dropdown">
@@ -43,9 +42,7 @@
         </select>
         <label for="searchTerm">搜索内容:</label>
         <input class="form-control" id="searchTerm" placeholder="Search..." />
-        <button class="sbutton btn btn-outline-secondary" type="submit">&#xF52A;</button>
-        <!--<script src=".\library\cookie.js"></script>-->
-
+        <button class="sbutton btn btn-outline-primary" type="submit">&#xF52A;</button>
     </div>
 
     <!-- settings -->
@@ -53,7 +50,7 @@
         <button title="settings" type="button" data-bs-toggle="modal" class="btn bi bi-sliders"
             data-bs-target="#settingsBox"></button>
         <!-- settings-box -->
-        <div class="modal" id="settingsBox">
+        <div class="modal " id="settingsBox">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -66,74 +63,71 @@
                     </div>
 
                     <!-- 模态框内容 -->
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td class="bg-light">
-                                    <nav class="navbar">
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#">Link 1</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#">Link 2</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#">Link 3</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </td>
-                                <td>
-                                    <div class="modal-body">
-                                        <h2>Background</h2>
-                                        <form id="bgSetBox">
-                                            <label><input type="radio" name="bg-option" value="color" checked>使用颜色<input
-                                                    type="color" id="color-input"
-                                                    class="form-control form-control-color"></label>
-                                            <br><br>
-                                            <label><input type="radio" name="bg-option" value="image">使用图片文件<span> (It
-                                                    sometimes dosen't work. You'd better use image with
-                                                    href.)</span><input type="file" id="file-input"
-                                                    class="form-control"></label><br><br>
-                                            <label><input type="radio" name="bg-option" value="href">使用图片链接<input
-                                                    type="text" id="href-input" class="form-control"></label>
-                                            <br><br>
-                                            <button type="button" id="set-bg-btn"
-                                                class="btn btn-outline-primary">应用Background</button>
-                                            <span id="bg-success"></span>
-                                        </form>
-                                        <h2>Search</h2>
-                                        <table id="searchSetBox">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="col-3">
-                                                        <label>Engine names:
-                                                            <br>
-                                                            <textarea class="form-control" id="searchSet-Names"></textarea>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label>Engine urls:<br>
-                                                            <textarea class="form-control" id="searchSet-Engines"></textarea>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <button class="btn btn-outline-primary" type="button"
-                                                            id="searchSet-btn">应用Search</button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <script src=".\search.js" type="module"></script>
-                                        <script src="wallpaper.js"></script>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="row">
+                        <nav class="navbar navbar-expand-sm bg-light col">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Link 1</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Link 2</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Link 3</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <span class="modal-body col">
+                            <h2>Background</h2>
+                            <form id="bgSetBox">
+                                <label><input type="radio" name="bg-option" value="color" checked>使用颜色<input
+                                        type="color" id="color-input" class="form-control form-control-color"></label>
+                                <br><br>
+                                <label><input type="radio" name="bg-option" value="image">使用图片文件<span> (It
+                                        sometimes dosen't work. You'd better use image with
+                                        href.)</span><input type="file" id="file-input"
+                                        class="form-control"></label><br><br>
+                                <label><input type="radio" name="bg-option" value="href">使用图片链接<input type="text"
+                                        id="href-input" class="form-control"></label>
+                                <br><br>
+                                <button type="button" id="set-bg-btn"
+                                    class="btn btn-outline-primary">应用Background</button>
+                                <span id="bg-success"></span>
+                            </form>
+                            <h2>Search</h2>
+                            <table id="searchSetBox">
+                                <tbody>
+                                    <tr>
+                                        <td class="col-3">
+                                            <label>Engine names:
+                                                <br>
+                                                <textarea class="form-control" id="searchSet-Names"></textarea>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label>Engine urls:<br>
+                                                <textarea class="form-control" id="searchSet-Engines"></textarea>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <button class="btn btn-outline-primary" type="button"
+                                                id="searchSet-btn">应用Search</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <script src="rightClick.js" type="module"></script>
+                            <script src="search.js" type="module"></script>
+                            <script src="background.js" type="module"></script>
+                        </span>
+                    </div>
+
+
+
+
 
                     <!-- 模态框底部 -->
                     <div class="modal-footer d-none">
@@ -144,6 +138,10 @@
             </div>
         </div>
     </div>
+
+    <ul id="rcMenu" class="dropdown-menu">
+        <li>Drag</li>    
+    </ul>
 </body>
 
 </html>

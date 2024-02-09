@@ -1,35 +1,33 @@
-//import { docCookies } from "../library/cookies.js";
-let searchTerm = document.getElementById("searchTerm");//element
+//search
+//import "../library/jquery.js";
+let searchTerm = $("#searchTerm")[0];
 
 // 初始化搜索引擎
-var sEngines = JSON.parse(localStorage.getItem("sEngines"));
-var sEngineNames = JSON.parse(localStorage.getItem("sEngineNames"));//
-var selectedEngine = localStorage.getItem("selectedEngine") - 0;
-var SearchEnginesBox = document.querySelector("ul#searchEngines");//<ul>
-if (!sEngines) {
-    var sEngines = [
-        "https://www.google.com/search?q=%sw%",
-        "https://cn.bing.com/search?q=%sw%",
-        "https://www.baidu.com/s?wd=%sw%"
-    ]
-    var sEngineNames = [
-        "Google",
-        "Bing",
-        "Baidu"
-    ]
-    var selectedEngine = 0
+var SearchEnginesBox = $("ul#searchEngines")[0];//<ul>
+var sEngines = [
+    "https://www.google.com/search?q=%sw%",
+    "https://cn.bing.com/search?q=%sw%",
+    "https://www.baidu.com/s?wd=%sw%"
+]
+var sEngineNames = [
+    "Google",
+    "Bing",
+    "Baidu"
+]
+var selectedEngine = 0;
+try {
+    var sEngines = /* JSON.parse */(localforage.getItem("sEngines"));
+    var sEngineNames = /* JSON.parse */(localforage.getItem("sEngineNames"));//
+    var selectedEngine = localforage.getItem("selectedEngine") - 0;
+} catch (er) {
+    if (!sEngines) {
+        console.log("no user search settings");
+    }
 }
-document.getElementById('s-engine').innerHTML = sEngineNames[selectedEngine];//button
-document.getElementById("searchSet-Names").innerHTML = localStorage.getItem("sEngineNames");
-document.getElementById("searchSet-Engines").innerHTML = localStorage.getItem("sEngines");
 
-//应用Engines
-document.getElementById("searchSet-btn").addEventListener("click", () => {
-    sEngineNames = JSON.parse(document.getElementById("searchSet-Names").value);
-    sEngines = JSON.parse(document.getElementById("searchSet-Engines").value);
-    search(true);
-})
-
+$('#s-engine')[0].innerHTML = sEngineNames[selectedEngine];//button
+$("#searchSet-Names")[0].innerHTML = localforage.getItem("sEngineNames");
+$("#searchSet-Engines")[0].innerHTML = localforage.getItem("sEngines");
 for (let i = 0; i < sEngines.length; i++) {
     let enginLi = document.createElement("li");
     let enginLitext = document.createTextNode(sEngineNames[i]);
@@ -40,15 +38,19 @@ for (let i = 0; i < sEngines.length; i++) {
     //console.log(enginLi);
 }
 
-
-
 // 初始化打开方式
-var selectedTarget = localStorage.getItem("selectedTarget");
+var selectedTarget = localforage.getItem("selectedTarget");
 if (selectedTarget) {
-    document.getElementById('starget').value = selectedTarget;
+    $('#starget').value = selectedTarget;
 }
 
-
+//User Settings
+document.getElementById("searchSet-btn").addEventListener("click", () => {
+    sEngineNames = JSON.parse(document.getElementById("searchSet-Names").value);
+    sEngines = JSON.parse(document.getElementById("searchSet-Engines").value);
+    search(true);
+    console.log(sEngines);
+})
 
 //选择搜索引擎
 document.addEventListener("click", (e) => {
@@ -61,17 +63,17 @@ document.addEventListener("click", (e) => {
 
 
 function search(isPreparing) {
-    //console.log("searh() 已触发")
-    let searchTerm = document.getElementById('searchTerm').value;
+    //console.log("searh() - callback")
+    let searchTerm = $('#searchTerm')[0].value;
     if (searchTerm) {
 
         // 获取用户选择的搜索引擎和打开方式
-        selectedTarget = document.getElementById('starget').value;
+        selectedTarget = $('#starget').value;
 
-        // 保存用户选择到cookie中
-        localStorage.setItem("sEngines", JSON.stringify(sEngines));
-        localStorage.setItem("sEngineNames", JSON.stringify(sEngineNames));
-        localStorage.setItem("selectedEngine", selectedEngine);
+        // 保存用户选择
+        localforage.setItem("sEngines", /* JSON.stringify */(sEngines));
+        localforage.setItem("sEngineNames", /* JSON.stringify */(sEngineNames));
+        localforage.setItem("selectedEngine", selectedEngine);
 
         // 创建完整的搜索URL
 
@@ -82,13 +84,13 @@ function search(isPreparing) {
         if (!isPreparing) {
             window.open(searchURL, selectedTarget);
         }
-        
+
 
     } else {
         if (!isPreparing) {
             window.alert("请输入搜索内容!");
         }
-        
+
     }
 }
 
@@ -114,4 +116,4 @@ searchTerm.addEventListener("input", (() => {
     searchTerm.style.width = searchTermWdith + "px";
 }))
 
-search(true)
+search(true);
