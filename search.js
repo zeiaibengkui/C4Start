@@ -15,28 +15,40 @@ var sEngineNames = [
     "Baidu"
 ]
 var selectedEngine = 0;
-try {
-    var sEngines = /* JSON.parse */(localforage.getItem("sEngines"));
-    var sEngineNames = /* JSON.parse */(localforage.getItem("sEngineNames"));//
-    var selectedEngine = localforage.getItem("selectedEngine") - 0;
-} catch (er) {
-    if (!sEngines) {
+if (localforage.getItem("sEngines")) {
+    localforage.getItem("sEngines").then((value) => {
+        sEngines = value;
+        $("#searchSet-Engines")[0].innerHTML = sEngines;
+    });
+    localforage.getItem("sEngineNames").then((value) => {
+        sEngineNames = value;
+        $("#searchSet-Names")[0].innerHTML = sEngineNames;
+    });//
+    localforage.getItem("selectedEngine").then((value) => {
+        selectedEngine = value - 0;
+        $('#s-engine')[0].innerHTML = sEngineNames[selectedEngine];//button
+        for (let i = 0; i < sEngines.length; i++) {
+            let enginLi = document.createElement("li");
+            let enginLitext = document.createTextNode(sEngineNames[i]);
+            enginLi.appendChild(enginLitext);
+            enginLi.setAttribute("data-num", (i + ""));
+            enginLi.setAttribute("class", "dropdown-item");
+            SearchEnginesBox.appendChild(enginLi);
+            //console.log(enginLi);
+            //really terrible
+        }
+    });
+} else {
+    if (!localforage.getItem("sEngines")) {
         console.log("no user search settings");
     }
 }
 
-$('#s-engine')[0].innerHTML = sEngineNames[selectedEngine];//button
-$("#searchSet-Names")[0].innerHTML = localforage.getItem("sEngineNames");
-$("#searchSet-Engines")[0].innerHTML = localforage.getItem("sEngines");
-for (let i = 0; i < sEngines.length; i++) {
-    let enginLi = document.createElement("li");
-    let enginLitext = document.createTextNode(sEngineNames[i]);
-    enginLi.appendChild(enginLitext);
-    enginLi.setAttribute("data-num", (i + ""));
-    enginLi.setAttribute("class", "dropdown-item");
-    SearchEnginesBox.appendChild(enginLi);
-    //console.log(enginLi);
-}
+//sEngine
+
+
+
+
 
 // 初始化打开方式
 var selectedTarget = localforage.getItem("selectedTarget");
@@ -116,4 +128,4 @@ searchTerm.addEventListener("input", (() => {
     searchTerm.style.width = searchTermWdith + "px";
 }))
 
-search(true);
+//search(true);
