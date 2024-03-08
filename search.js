@@ -1,5 +1,5 @@
 //search
-//import "../library/jquery.js";
+//import "../library/jquery.js";  //only when coding
 let searchTerm = $("#searchTerm")[0];
 
 // 初始化搜索引擎
@@ -19,14 +19,6 @@ if (localforage.getItem("sEngines")) {
     localforage.getItem("sEngines").then((value) => {
         sEngines = value;
         $("#searchSet-Engines")[0].innerHTML = sEngines;
-    });
-    localforage.getItem("sEngineNames").then((value) => {
-        sEngineNames = value;
-        $("#searchSet-Names")[0].innerHTML = sEngineNames;
-    });//
-    localforage.getItem("selectedEngine").then((value) => {
-        selectedEngine = value - 0;
-        $('#s-engine')[0].innerHTML = sEngineNames[selectedEngine];//button
         for (let i = 0; i < sEngines.length; i++) {
             let enginLi = document.createElement("li");
             let enginLitext = document.createTextNode(sEngineNames[i]);
@@ -37,6 +29,14 @@ if (localforage.getItem("sEngines")) {
             //console.log(enginLi);
             //really terrible
         }
+    });
+    localforage.getItem("sEngineNames").then((value) => {
+        sEngineNames = value;
+        $("#searchSet-Names")[0].innerHTML = sEngineNames;
+    });//
+    localforage.getItem("selectedEngine").then((value) => {
+        selectedEngine = value - 0;
+        $('#s-engine')[0].innerHTML = sEngineNames[selectedEngine];//button
     });
 } else {
     if (!localforage.getItem("sEngines")) {
@@ -65,8 +65,8 @@ document.getElementById("searchSet-btn").addEventListener("click", () => {
 })
 
 //选择搜索引擎
-document.addEventListener("click", (e) => {
-    //console.log(e.target.parentNode.id);
+SearchEnginesBox.addEventListener("click", (e) => {
+    console.log(e.target.parentNode.id);
     if (e.target.parentNode.id == "searchEngines") {
         selectedEngine = e.target.getAttribute("data-num") - 0;
         document.getElementById("s-engine").innerHTML = e.target.innerHTML;
@@ -107,7 +107,7 @@ function search(isPreparing) {
 }
 
 //触发搜索
-document.querySelector(".sbutton").addEventListener("click", () => {
+$(".sbutton").on("click", () => {
     search();
 });
 

@@ -27,7 +27,6 @@ body {
   width: max-content;
   max-width: 100px;
   position: absolute;
-  display: none;
 }
 
 #searchbar {
