@@ -6,27 +6,32 @@
     <link href="main.css" rel="stylesheet" type="text/css" />
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>C4起始页</title>
-    <!--START cdn-->
-    <!--bootstarp-->
+    <!--START CDN-->
+    <!--Bootstarp-->
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <script defer src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
 
-    <!--jquery&ui-->
+    <!--jQuery&UI-->
     <link href="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" rel="stylesheet">
     <link href="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/themes/base/theme.min.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/jquery-ui.js"></script>
 
-    <!--localforage-->
+    <!--LocalForage-->
     <script src="https://cdn.bootcdn.net/ajax/libs/localforage/1.10.0/localforage.js"></script>
-    <script>localforage.setDriver([localforage.LOCALSTORAGE, localforage.INDEXEDDB, localforage.WEBSQL]);</script>
-    <!--END cdn-->
+    <script>
+        localforage.setDriver([localforage.LOCALSTORAGE, localforage.INDEXEDDB, localforage.WEBSQL]);
+        
+    </script>
+
+    <!--END CDN-->
 </head>
 
 <body>
     <div id="bg"></div>
-    <div class="input-group shadow" id="searchbar">
+
+    <div id="searchbar" class="input-group shadow drag" :style="searchBarStyle">
         <button type="button" class="btn dropdown-toggle" id="s-engine" data-bs-toggle="dropdown">
             选择搜索引擎
         </button>
@@ -35,7 +40,7 @@
         </div>
         <label class="input-group-text" for="starget">选择打开方式:</label>
         <select class="form-select" id="starget">
-            <option value="_blank">&#xF6D1;在新标签页中打开</option>
+            <option value="_blank">&#xF6D1;在新标签页中打开{{test}}</option>
             <option value="_self">&#xF620;在当前标签页中打开</option>
             <!--<option value="_parent">在父窗口中打开</option>-->
             <!--<option value="_top">在整个窗口中打开</option>-->
@@ -44,6 +49,10 @@
         <input class="form-control" id="searchTerm" placeholder="Search..." />
         <button class="sbutton btn btn-outline-primary" type="submit">&#xF52A;</button>
     </div>
+
+    <ul id="rcMenu" class="dropdown-menu">
+        <li id="drag" class="dropdown-item">Drag</li>
+    </ul>
 
     <!-- settings -->
     <div id="settings">
@@ -119,9 +128,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <script src="rightClick.js" type="module"></script>
-                            <script src="search.js" type="module"></script>
-                            <script src="background.js" type="module"></script>
                         </span>
                     </div>
 
@@ -139,9 +145,20 @@
         </div>
     </div>
 
-    <ul id="rcMenu" class="dropdown-menu">
-        <li id="drag">Drag</li>    
-    </ul>
+    <div id="test" class="d-none">{{test}}</div>
 </body>
+
+<script src="rightClick.js" type="module"></script>
+<script src="search.js" type="module"></script>
+<script src="background.js" type="module"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+        const loadTime = new Date(window.Date());
+        console.log('HTML loaded at ' + loadTime.toLocaleTimeString('it-IT'));
+    });
+
+    //test code
+</script>
+
 
 </html>

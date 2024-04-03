@@ -14,40 +14,36 @@ var sEngineNames = [
     "Bing",
     "Baidu"
 ]
-var selectedEngine = 0;
-if (localforage.getItem("sEngines")) {
-    localforage.getItem("sEngines").then((value) => {
+var selectedEngine = 1;
+localforage.getItem("sEngines").then((value) => {
+    if (value) {
         sEngines = value;
-        $("#searchSet-Engines")[0].innerHTML = sEngines;
-        for (let i = 0; i < sEngines.length; i++) {
-            let enginLi = document.createElement("li");
-            let enginLitext = document.createTextNode(sEngineNames[i]);
-            enginLi.appendChild(enginLitext);
-            enginLi.setAttribute("data-num", (i + ""));
-            enginLi.setAttribute("class", "dropdown-item");
-            SearchEnginesBox.appendChild(enginLi);
-            //console.log(enginLi);
-            //really terrible
-        }
-    });
-    localforage.getItem("sEngineNames").then((value) => {
-        sEngineNames = value;
-        $("#searchSet-Names")[0].innerHTML = sEngineNames;
-    });//
-    localforage.getItem("selectedEngine").then((value) => {
-        selectedEngine = value - 0;
-        $('#s-engine')[0].innerHTML = sEngineNames[selectedEngine];//button
-    });
-} else {
-    if (!localforage.getItem("sEngines")) {
-        console.log("no user search settings");
     }
-}
+    $("#searchSet-Engines")[0].innerHTML = JSON.stringify(sEngines);
+    for (let i = 0; i < sEngines.length; i++) {
+        let enginLi = document.createElement("li");
+        let enginLitext = document.createTextNode(sEngineNames[i]);
+        enginLi.appendChild(enginLitext);
+        enginLi.setAttribute("data-num", (i + ""));
+        enginLi.setAttribute("class", "dropdown-item");
+        SearchEnginesBox.appendChild(enginLi);
+        //console.log(enginLi);
+        //really terrible
+    }
+});
+localforage.getItem("sEngineNames").then((value) => {
+    if (value) {
+        sEngineNames = value;
+    }
 
-//sEngine
-
-
-
+    $("#searchSet-Names")[0].innerHTML = JSON.stringify(sEngineNames);
+});//
+localforage.getItem("selectedEngine").then((value) => {
+    if (value) {
+        selectedEngine = value - 0;
+    }
+    $('#s-engine')[0].innerHTML = sEngineNames[selectedEngine];//button
+});
 
 
 // 初始化打开方式
@@ -61,7 +57,7 @@ document.getElementById("searchSet-btn").addEventListener("click", () => {
     sEngineNames = JSON.parse(document.getElementById("searchSet-Names").value);
     sEngines = JSON.parse(document.getElementById("searchSet-Engines").value);
     search(true);
-    console.log(sEngines);
+    //console.log(sEngines);
 })
 
 //选择搜索引擎
@@ -128,4 +124,10 @@ searchTerm.addEventListener("input", (() => {
     searchTerm.style.width = searchTermWdith + "px";
 }))
 
-//search(true);
+
+logTime();
+
+function logTime() {
+    const event = new Date(window.Date());
+    console.log('search.js loaded at ' + event.toLocaleTimeString('it-IT'));
+}

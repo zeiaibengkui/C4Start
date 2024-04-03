@@ -11,25 +11,29 @@ const bgSuccess = $('#bg-success')[0];
 // 读取背景设置
 let bgSetting
 
-localforage.getItem('bg-setting').then((result) => bgSetting = JSON.parse(result));
-if (!bgSetting) {
-    bgSetting = { type: "color", value: "#ffffff" };
-    localforage.setItem('bg-setting', JSON.stringify(bgSetting));
-}
+localforage.getItem('bg-setting').then((result) => {
+    bgSetting = JSON.parse(result);
+    if (!bgSetting) {
+        bgSetting = { type: "color", value: "#ffffff" };
+        localforage.setItem('bg-setting', JSON.stringify(bgSetting));
+    }
+    if (!document.body.style) document.body.setAttribute(style, "");
+    if (bgSetting.type === 'color') {
+        document.body.style.backgroundColor = bgSetting.value;
+        bgOptionInputs[0].checked = true;
+    } else if (bgSetting.type === 'file') {
+        document.body.style.backgroundImage = `url(${bgSetting.value})`;
+        bgOptionInputs[1].checked = true;
+    } else if (bgSetting.type === 'href') {
+        document.body.style.backgroundImage = `url(${bgSetting.value})`;
+        bgOptionInputs[2].checked = true;
+        hrefinput.value = bgSetting.value;
+    }
+});
 
 
-if (!document.body.style) document.body.setAttribute(style, "");
-if (bgSetting.type === 'color') {
-    document.body.style.backgroundColor = bgSetting.value;
-    bgOptionInputs[0].checked = true;
-} else if (bgSetting.type === 'file') {
-    document.body.style.backgroundImage = `url(${bgSetting.value})`;
-    bgOptionInputs[1].checked = true;
-} else if (bgSetting.type === 'href') {
-    document.body.style.backgroundImage = `url(${bgSetting.value})`;
-    bgOptionInputs[2].checked = true;
-    hrefinput.value = bgSetting.value;
-}
+
+
 
 
 // 点击设置背景按钮时触发

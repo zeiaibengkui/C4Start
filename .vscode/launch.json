@@ -5,10 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Chrome",
+            "request": "launch",
+            "type": "chrome",
+            "url": "http://localhost:8008",
+            "enableContentValidation": true,
+            "webRoot": "${workspaceFolder}"
+        },
+        {
             "name": "Edge",
             "request": "launch",
             "type": "msedge",
-            "url": "http://127.0.0.1:5758/index.html",
+            "url": "http://127.0.0.1:8008/index.html",
             "webRoot": "${workspaceFolder}"
         },
         {
@@ -16,7 +24,7 @@
             "type": "firefox",
             "request": "launch",
             "reAttach": true,
-            "url": "http://127.0.0.1:5758/index.html",
+            "url": "http://127.0.0.1:8008/index.html",
             "webRoot": "${workspaceFolder}"
         }
     ]

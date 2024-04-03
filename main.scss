@@ -26,10 +26,17 @@ body {
     width: max-content;
     max-width: 100px;
     position: absolute;
+    z-index: 1100;
+
+    #drag{
+        cursor: move;
+        -webkit-user-select: none;
+        user-select: none;
+    }
 }
 
 #searchbar {
-    max-width: calc(80vw - 214px);
+    max-width: calc(60vw - 0px);
     min-width: 340px;
     width: auto;
     height: 40px;
@@ -72,16 +79,12 @@ body {
 
     >#searchTerm {
         text-wrap: nowrap;
-        /* height: 100%; */
+        font-size: 100%;
         min-width: 100px;
         width: 100px;
+        height: 100%;
         overflow: hidden;
-        // display: inline-block;
-        // border-right: none;
-        // border-top: none;
-        // border-bottom: none;
-        // border-radius: 0;
-        max-width: calc(80vw - 218px);
+        max-width: calc(60vw - 177px);
     }
 
     >label[for="searchTerm"] {
