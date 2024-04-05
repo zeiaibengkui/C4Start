@@ -22,13 +22,14 @@ body {
     background-size: cover;
 }
 
-#rcMenu{ //right click menu
+#rcMenu {
+    //right click menu
     width: max-content;
     max-width: 100px;
     position: absolute;
     z-index: 1100;
 
-    #drag{
+    #drag {
         cursor: move;
         -webkit-user-select: none;
         user-select: none;
@@ -37,13 +38,13 @@ body {
 
 #searchbar {
     max-width: calc(60vw - 0px);
-    min-width: 340px;
+    min-width: 276px;
     width: auto;
     height: 40px;
     //overflow: hidden;
     border-radius: var(--border-radius) !important;
     border: var(--bs-border-width) solid var(--bs-border-color);
-    background: white;
+    background: var(--bs-body-bg);
     opacity: .7;
     transition: opacity .2s;
     font-family: bootstrap-icons, "sans-serif" !important;
@@ -69,7 +70,7 @@ body {
     }
 
     >.sbutton {
-        border-radius: 0 19px 19px 0  !important;
+        border-radius: 0 19px 19px 0 !important;
         shape-outside: circle(50%);
         width: 38px;
         height: 38px;
@@ -110,6 +111,12 @@ body {
     top: 0;
     width: 100vw;
 
+    >nav {
+        float: right;
+        width: max-content;
+        height: min-content;
+    }
+
     >form {
         margin-bottom: 20px;
     }
@@ -135,8 +142,6 @@ body {
     #settingsBox>div.modal-dialog {
         width: max-content;
 
-        
-
         >div.modal-content {
             max-width: 80vw;
             max-height: calc(100vh - (var(--bs-modal-margin) * 2));
@@ -145,12 +150,13 @@ body {
             scrollbar-color: var(--bs-primary) rgba(255, 255, 255, 0);
             scrollbar-width: thin;
 
-            >.modal-header{
+            >.modal-header {
                 position: sticky;
-                bottom: 0;
+                z-index: 1;
+                top: 0;
                 width: 100%;
-                background-color: #fff;
-                box-shadow: rgb(0, 0, 0,.5) 0 0px 5px 5px;
+                background-color: var(--bs-body-bg);
+                box-shadow: rgb(0, 0, 0, .5) 0 0px 5px 5px;
             }
 
             >div.row {

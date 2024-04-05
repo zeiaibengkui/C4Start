@@ -7,10 +7,6 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>C4起始页</title>
     <!--START CDN-->
-    <!--Bootstarp-->
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-    <script defer src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
 
     <!--jQuery&UI-->
     <link href="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" rel="stylesheet">
@@ -22,8 +18,12 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/localforage/1.10.0/localforage.js"></script>
     <script>
         localforage.setDriver([localforage.LOCALSTORAGE, localforage.INDEXEDDB, localforage.WEBSQL]);
-        
     </script>
+
+    <!--Bootstarp-->
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <script defer src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
 
     <!--END CDN-->
 </head>
@@ -31,13 +31,12 @@
 <body>
     <div id="bg"></div>
 
-    <div id="searchbar" class="input-group shadow drag" :style="searchBarStyle">
-        <button type="button" class="btn dropdown-toggle" id="s-engine" data-bs-toggle="dropdown">
+    <div id="searchbar" class="input-group shadow drag">
+        <button type="button" class="btn dropdown-toggle" id="s-engine" data-bs-toggle="dropdown"
+            data-bs-target="#searchEngines">
             选择搜索引擎
         </button>
-        <div class="dropdown">
-            <ul class="dropdown-menu" id="searchEngines"><!--wait for js--></ul>
-        </div>
+        <ul class="dropdown-menu" id="searchEngines"><!--wait for js--></ul>
         <label class="input-group-text" for="starget">选择打开方式:</label>
         <select class="form-select" id="starget">
             <option value="_blank">&#xF6D1;在新标签页中打开{{test}}</option>
@@ -56,8 +55,39 @@
 
     <!-- settings -->
     <div id="settings">
-        <button title="settings" type="button" data-bs-toggle="modal" class="btn bi bi-sliders"
-            data-bs-target="#settingsBox"></button>
+        <nav class="navbar-nav flex-row flex-wrap ms-md-auto">
+            <button title="settings" type="button" data-bs-toggle="modal" class="btn bi bi-sliders"
+                data-bs-target="#settingsBox"></button>
+            <span class="nav-item dropdown" _msthidden="4">
+                <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                    id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static"
+                    _mstvisible="0">
+                    <i class="bi bi-brightness-high-fill"></i>
+                    <span class="d-lg-none ms-2" _msttexthash="11978356" _msthash="33" _mstvisible="1">切换主题</span>
+                </button>
+                <ul class="dropdown dropdown-menu dropdown-menu-end position-absolute" aria-labelledby="bd-theme"
+                    style="--bs-dropdown-min-width: 8rem;" _mstvisible="0">
+                    <li _mstvisible="1">
+                        <button type="button" class="dropdown-item d-flex align-items-center active"
+                            data-bs-theme-value="light" _mstvisible="2">
+                            <i class="bi bi-brightness-high-fill"></i>光
+                        </button>
+                    </li>
+                    <li _mstvisible="1">
+                        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+                            _mstvisible="2">
+                            <i class="bi bi-brightness-high-fill"></i>黑暗
+                        </button>
+                    </li>
+                    <li _mstvisible="1">
+                        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto"
+                            _mstvisible="2">
+                            <i class="bi bi-circle-half"></i>自动
+                        </button>
+                    </li>
+                </ul>
+            </span>
+        </nav>
         <!-- settings-box -->
         <div class="modal " id="settingsBox">
             <div class="modal-dialog">
@@ -73,7 +103,7 @@
 
                     <!-- 模态框内容 -->
                     <div class="row">
-                        <nav class="navbar navbar-expand-sm bg-light col">
+                        <nav class="navbar navbar-expand-sm col">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Link 1</a>
@@ -151,6 +181,7 @@
 <script src="rightClick.js" type="module"></script>
 <script src="search.js" type="module"></script>
 <script src="background.js" type="module"></script>
+<script src="theme.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", (event) => {
         const loadTime = new Date(window.Date());
