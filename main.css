@@ -38,12 +38,12 @@ body {
 
 #searchbar {
   max-width: calc(60vw - 0px);
-  min-width: 340px;
+  min-width: 276px;
   width: auto;
   height: 40px;
   border-radius: var(--border-radius) !important;
   border: var(--bs-border-width) solid var(--bs-border-color);
-  background: white;
+  background: var(--bs-body-bg);
   opacity: 0.7;
   transition: opacity 0.2s;
   font-family: bootstrap-icons, "sans-serif" !important;
@@ -102,6 +102,13 @@ body {
   top: 0;
   width: 100vw;
 }
+#settings > nav {
+  float: right;
+  width: -moz-max-content;
+  width: max-content;
+  height: -moz-min-content;
+  height: min-content;
+}
 #settings > form {
   margin-bottom: 20px;
 }
@@ -134,9 +141,10 @@ body {
 }
 #settings #settingsBox > div.modal-dialog > div.modal-content > .modal-header {
   position: sticky;
-  bottom: 0;
+  z-index: 1;
+  top: 0;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--bs-body-bg);
   box-shadow: rgba(0, 0, 0, 0.5) 0 0px 5px 5px;
 }
 #settings #settingsBox > div.modal-dialog > div.modal-content > div.row {

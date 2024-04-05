@@ -38,21 +38,48 @@ document.addEventListener('click', () => {
 
 $(".drag").draggable({ handle: "#drag" });
 
-//auto save position
-/* document.addEventListener("DOMContentLoaded", (event) => {
-    localforage.getItem(key).then((value) => {
-        if (value) { vl = value }
-        else { localforage.setItem(key, vl); };
-    })
-});
+
+var autoSavePosition = async () => {
+    for (var i = 0; i < $(".drag").length; i++) {
+        if (!$(".drag")[i].getAttribute('style')) $(".drag")[i].setAttribute('style', '');
+        var key = $(".drag")[i].id;
+        /* var position = $('#' + key).position();
+        var top = position.top;
+        var left = position.left; */
+        console.log(`key:${key}`);
+        await localforage.getItem('DragPosition - ' + key).then((value) => {
+            if (value) {
+                console.log(value.top);
+                console.log(i);
+                console.log($(".drag")[i]);
+                $(".drag")[i].style.top = value.top;
+                $(".drag")[i].style.left = value.left;
+            }
+            else { /* localforage.setItem(key, $(".drag")[i].style); */ };
+        })
+    }
+    return;
+}
+autoSavePosition();
+
 
 window.addEventListener("beforeunload", (event) => {
     // Cancel the event as stated by the standard.
     //event.preventDefault();
     // Chrome requires returnValue to be set.
     //event.returnValue = "";
-    localforage.setItem(key, vl);
-}); */
+    for (var i = 0; i < $(".drag").length; i++) {
+        var key = $(".drag")[i].id;
+        if ($(".drag")[i].style.top && $(".drag")[i].style.left) {
+            var position = {
+                top: $(".drag")[i].style.top,
+                left: $(".drag")[i].style.left
+            }
+        }
+        localforage.setItem('DragPosition - ' + key, position);
+    }
+});
+
 
 
 logTime();
