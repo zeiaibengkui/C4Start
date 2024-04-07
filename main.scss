@@ -26,8 +26,8 @@ body {
     //right click menu
     width: max-content;
     max-width: 100px;
-    position: absolute;
-    z-index: 1100;
+    position: fixed;
+    z-index: 1200;
 
     #drag {
         cursor: move;
@@ -56,15 +56,14 @@ body {
     >#starget {
         max-width: 67px !important;
         font-family: bootstarp-icons, sans-serif;
+        height: 100%;
     }
 
     #s-engine {
         width: min-content;
         font-family: bootstrap-icons, sans-serif, dengxian, fangsong;
-        border-top: none;
-        border-bottom: none;
         background-color: transparent;
-        border-radius: 0;
+        border: var(--bs-border-width) solid var(--bs-border-color);
         border-bottom-left-radius: var(--border-radius);
         border-top-left-radius: var(--border-radius);
     }
@@ -115,6 +114,13 @@ body {
         float: right;
         width: max-content;
         height: min-content;
+
+        >button,
+        >span>button {
+            float: right;
+            text-shadow: 0 0 6px var(--bs-body-bg);
+            padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+        }
     }
 
     >form {
@@ -126,10 +132,7 @@ body {
         border-top-left-radius: var(--bs-modal-inner-border-radius);
     }
 
-    >button[title="settings"] {
-        float: right;
-        text-shadow: 0 0 2px white;
-    }
+
 
     #bg-success {
         margin-left: 5em;

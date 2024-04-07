@@ -12,8 +12,11 @@ document.addEventListener('contextmenu', (event) => {
     if (!(event.target.id === "rcMenu" || event.target.parentNode.id === "rcMenu")) {
         event.preventDefault();
         event.target.parentNode.appendChild($('#rcMenu')[0]);
-        $('#rcMenu')[0].style.top = event.pageY - event.target.parentNode.offsetTop + 'px';
-        $('#rcMenu')[0].style.left = event.pageX - event.target.parentNode.offsetLeft + 'px';
+        $('#rcMenu')[0].style.top = event.pageY/*  - event.target.offsetTop */ + 'px';
+        $('#rcMenu')[0].style.left = event.pageX/*  - event.target.parentNode.offsetLeft */ + 'px';
+        /* console.log(event.target.parentNode.offsetTop);
+        console.log(event.target.parentNode);
+        console.log($('#rcMenu')[0].offsetParent); */
         if ($(event.target).hasClass('ui-draggable') || $(event.target.parentNode).hasClass('ui-draggable')) {
             $("#drag")[0].style.display = "";
         } else {
@@ -37,7 +40,6 @@ document.addEventListener('click', () => {
 });
 
 $(".drag").draggable({ handle: "#drag" });
-
 
 var autoSavePosition = async () => {
     for (var i = 0; i < $(".drag").length; i++) {

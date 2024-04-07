@@ -26,8 +26,8 @@ body {
   width: -moz-max-content;
   width: max-content;
   max-width: 100px;
-  position: absolute;
-  z-index: 1100;
+  position: fixed;
+  z-index: 1200;
 }
 #rcMenu #drag {
   cursor: move;
@@ -54,15 +54,14 @@ body {
 #searchbar > #starget {
   max-width: 67px !important;
   font-family: bootstarp-icons, sans-serif;
+  height: 100%;
 }
 #searchbar #s-engine {
   width: -moz-min-content;
   width: min-content;
   font-family: bootstrap-icons, sans-serif, dengxian, fangsong;
-  border-top: none;
-  border-bottom: none;
   background-color: transparent;
-  border-radius: 0;
+  border: var(--bs-border-width) solid var(--bs-border-color);
   border-bottom-left-radius: var(--border-radius);
   border-top-left-radius: var(--border-radius);
 }
@@ -109,16 +108,18 @@ body {
   height: -moz-min-content;
   height: min-content;
 }
+#settings > nav > button,
+#settings > nav > span > button {
+  float: right;
+  text-shadow: 0 0 6px var(--bs-body-bg);
+  padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+}
 #settings > form {
   margin-bottom: 20px;
 }
 #settings > #setingsBox {
   max-height: 45vh;
   border-top-left-radius: var(--bs-modal-inner-border-radius);
-}
-#settings > button[title=settings] {
-  float: right;
-  text-shadow: 0 0 2px white;
 }
 #settings #bg-success {
   margin-left: 5em;
