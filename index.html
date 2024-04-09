@@ -20,6 +20,9 @@
         localforage.setDriver([localforage.LOCALSTORAGE, localforage.INDEXEDDB, localforage.WEBSQL]);
     </script>
 
+    <!--SweetAlert-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
     <!--Bootstarp-->
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.css" rel="stylesheet">
@@ -36,10 +39,18 @@
             data-bs-target="#searchEngines">
             选择搜索引擎
         </button>
-        <ul class="dropdown-menu" id="searchEngines"><!--wait for js--></ul>
+        <ul class="dropdown-menu" id="searchEngines">
+            <!--wait for js-->
+            <li>
+                <hr />
+            </li>
+            <li id="addSearchEngine" class="dropdown-item d-flex justify-content-center float-end">
+                + Add search engine
+            </li>
+        </ul>
         <label class="input-group-text" for="starget">选择打开方式:</label>
         <select class="form-select" id="starget">
-            <option value="_blank">&#xF6D1;在新标签页中打开{{test}}</option>
+            <option value="_blank">&#xF6D1;在新标签页中打开</option>
             <option value="_self">&#xF620;在当前标签页中打开</option>
             <!--<option value="_parent">在父窗口中打开</option>-->
             <!--<option value="_top">在整个窗口中打开</option>-->
@@ -58,8 +69,8 @@
         <nav class="navbar-nav flex-row flex-wrap ms-md-auto">
 
             <span class="nav-item dropdown">
-                <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
-                    id="bd-theme" type="button" data-bs-toggle="dropdown">
+                <button class="btn btn-link nav-link" id="bd-theme"
+                    type="button" data-bs-toggle="dropdown">
                     <i class="bi bi-brightness-high-fill"></i>
                     <span class="d-lg-none ms-2">切换主题</span>
                 </button>
@@ -85,8 +96,9 @@
                     </li>
                 </ul>
             </span>
-            <button title="settings" type="button" data-bs-toggle="modal" class="btn nav-link btn-link bi bi-sliders"
-                data-bs-target="#settingsBox"></button>
+            <button title="settings" type="button" data-bs-toggle="modal" class="btn nav-link btn-link"
+                data-bs-target="#settingsBox"><i class="bi bi-sliders"></i><span
+                    class="d-lg-none ms-2">切换主题</span></button>
         </nav>
         <!-- settings-box -->
         <div class="modal " id="settingsBox">

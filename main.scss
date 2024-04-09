@@ -127,9 +127,66 @@ body {
         margin-bottom: 20px;
     }
 
-    >#setingsBox {
-        max-height: 45vh;
+    >#settingsBox {
         border-top-left-radius: var(--bs-modal-inner-border-radius);
+
+        >div.modal-dialog {
+            --bs-modal-width:80vw;
+
+            >div.modal-content {
+                width: 100%;
+                max-height: calc(100vh - (var(--bs-modal-margin) * 2));
+                overflow-y: auto;
+                overflow-x: hidden;
+                scrollbar-color: var(--bs-primary) rgba(255, 255, 255, 0);
+                scrollbar-width: thin;
+
+                >.modal-header {
+                    position: sticky;
+                    z-index: 1;
+                    top: 0;
+                    width: 100%;
+                    background-color: var(--bs-body-bg);
+                    box-shadow: rgb(0, 0, 0, .5) 0 0px 5px 5px;
+                }
+
+                >div.row {
+                    margin-left: 0;
+
+                    nav {
+                        width: max-content;
+
+                        ul {
+                            width: max-content;
+
+                            li {
+                                width: max-content;
+                            }
+                        }
+                    }
+                }
+
+                >.modal-body {
+                    #searchSetBox {
+                        display: flex;
+
+                        td>label {
+                            width: 100%;
+
+                            textarea {
+                                width: 100%;
+                            }
+                        }
+
+
+
+                        #searchSet-Names {
+                            min-width: 111px;
+                        }
+                    }
+                }
+            }
+        }
     }
 
 
@@ -142,63 +199,7 @@ body {
         width: max-content;
     }
 
-    #settingsBox>div.modal-dialog {
-        width: max-content;
 
-        >div.modal-content {
-            max-width: 80vw;
-            max-height: calc(100vh - (var(--bs-modal-margin) * 2));
-            overflow-y: auto;
-            overflow-x: hidden;
-            scrollbar-color: var(--bs-primary) rgba(255, 255, 255, 0);
-            scrollbar-width: thin;
-
-            >.modal-header {
-                position: sticky;
-                z-index: 1;
-                top: 0;
-                width: 100%;
-                background-color: var(--bs-body-bg);
-                box-shadow: rgb(0, 0, 0, .5) 0 0px 5px 5px;
-            }
-
-            >div.row {
-                margin-left: 0;
-
-                nav {
-                    width: max-content;
-
-                    ul {
-                        width: max-content;
-
-                        li {
-                            width: max-content;
-                        }
-                    }
-                }
-            }
-
-            >.modal-body {
-                #searchSetBox {
-                    display: flex;
-
-                    td>label {
-                        width: 100%;
-
-                        textarea {
-                            width: 100%;
-                        }
-                    }
-
-
-
-                    #searchSet-Names {
-                        min-width: 111px;
-                    }
-                }
-            }
-        }
-    }
 
 
 

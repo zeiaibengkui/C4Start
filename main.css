@@ -117,30 +117,21 @@ body {
 #settings > form {
   margin-bottom: 20px;
 }
-#settings > #setingsBox {
-  max-height: 45vh;
+#settings > #settingsBox {
   border-top-left-radius: var(--bs-modal-inner-border-radius);
 }
-#settings #bg-success {
-  margin-left: 5em;
+#settings > #settingsBox > div.modal-dialog {
+  --bs-modal-width:80vw;
 }
-#settings span.modal-body {
-  width: -moz-max-content;
-  width: max-content;
-}
-#settings #settingsBox > div.modal-dialog {
-  width: -moz-max-content;
-  width: max-content;
-}
-#settings #settingsBox > div.modal-dialog > div.modal-content {
-  max-width: 80vw;
+#settings > #settingsBox > div.modal-dialog > div.modal-content {
+  width: 100%;
   max-height: calc(100vh - var(--bs-modal-margin) * 2);
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-color: var(--bs-primary) rgba(255, 255, 255, 0);
   scrollbar-width: thin;
 }
-#settings #settingsBox > div.modal-dialog > div.modal-content > .modal-header {
+#settings > #settingsBox > div.modal-dialog > div.modal-content > .modal-header {
   position: sticky;
   z-index: 1;
   top: 0;
@@ -148,30 +139,37 @@ body {
   background-color: var(--bs-body-bg);
   box-shadow: rgba(0, 0, 0, 0.5) 0 0px 5px 5px;
 }
-#settings #settingsBox > div.modal-dialog > div.modal-content > div.row {
+#settings > #settingsBox > div.modal-dialog > div.modal-content > div.row {
   margin-left: 0;
 }
-#settings #settingsBox > div.modal-dialog > div.modal-content > div.row nav {
+#settings > #settingsBox > div.modal-dialog > div.modal-content > div.row nav {
   width: -moz-max-content;
   width: max-content;
 }
-#settings #settingsBox > div.modal-dialog > div.modal-content > div.row nav ul {
+#settings > #settingsBox > div.modal-dialog > div.modal-content > div.row nav ul {
   width: -moz-max-content;
   width: max-content;
 }
-#settings #settingsBox > div.modal-dialog > div.modal-content > div.row nav ul li {
+#settings > #settingsBox > div.modal-dialog > div.modal-content > div.row nav ul li {
   width: -moz-max-content;
   width: max-content;
 }
-#settings #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox {
+#settings > #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox {
   display: flex;
 }
-#settings #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox td > label {
+#settings > #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox td > label {
   width: 100%;
 }
-#settings #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox td > label textarea {
+#settings > #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox td > label textarea {
   width: 100%;
 }
-#settings #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox #searchSet-Names {
+#settings > #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox #searchSet-Names {
   min-width: 111px;
+}
+#settings #bg-success {
+  margin-left: 5em;
+}
+#settings span.modal-body {
+  width: -moz-max-content;
+  width: max-content;
 }/*# sourceMappingURL=main.css.map */
