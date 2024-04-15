@@ -26,7 +26,7 @@ body {
     //right click menu
     width: max-content;
     max-width: 100px;
-    position: fixed;
+    position: absolute;
     z-index: 1200;
 
     #drag {
@@ -118,7 +118,9 @@ body {
         >button,
         >span>button {
             float: right;
-            text-shadow: 0 0 6px var(--bs-body-bg);
+            text-shadow: 1px 1px 2px var(--bs-body-bg);
+            /* --bg: color-mix(in srgb, var(--bs-body-bg) 50%, transparent 50%); */
+            /* background-image: radial-gradient(var(--bg) 0%,transparent 50%,transparent 100%); */
             padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
         }
     }
@@ -131,7 +133,7 @@ body {
         border-top-left-radius: var(--bs-modal-inner-border-radius);
 
         >div.modal-dialog {
-            --bs-modal-width:80vw;
+            --bs-modal-width: 80vw;
 
             >div.modal-content {
                 width: 100%;
@@ -170,7 +172,7 @@ body {
                     #searchSetBox {
                         display: flex;
 
-                        td>label {
+                        label {
                             width: 100%;
 
                             textarea {
@@ -198,10 +200,4 @@ body {
     span.modal-body {
         width: max-content;
     }
-
-
-
-
-
-
 }

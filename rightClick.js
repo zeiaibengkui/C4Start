@@ -3,7 +3,8 @@
 //import * as ui from "../library/jquery-ui.js"
 
 
-"use strict"; (() => {
+"use strict";
+(() => {
     if (!$('#drag')[0].style) $('#drag')[0].setAttritube("style", "");
 
     document.addEventListener('contextmenu', (event) => {
@@ -13,13 +14,23 @@
         } */
         if (!(event.target.id === "rcMenu" || event.target.parentNode.id === "rcMenu")) {
             event.preventDefault();
-            event.target.parentNode.appendChild($('#rcMenu')[0]);
-            $('#rcMenu')[0].style.top = event.pageY/*  - event.target.offsetTop */ + 'px';
-            $('#rcMenu')[0].style.left = event.pageX/*  - event.target.parentNode.offsetLeft */ + 'px';
-            /* console.log(event.target.parentNode.offsetTop);
-            console.log(event.target.parentNode);
-            console.log($('#rcMenu')[0].offsetParent); */
-            if ($(event.target).hasClass('ui-draggable') || $(event.target.parentNode).hasClass('ui-draggable')) {
+            //确定位置
+            if (event.target.offsetParent) {
+                event.target.offsetParent.appendChild($('#rcMenu')[0]);
+                var posi = event.target.offsetParent.getBoundingClientRect();
+            } else if (event.target.parentNode) {
+                event.target.parentNode.appendChild($('#rcMenu')[0]);
+                var posi = event.target.parentNode.getBoundingClientRect();
+            } else {
+                document.body.appendChild($('#rcMenu')[0]);
+                var posi = document.body.getBoundingClientRect();
+            }
+            $('#rcMenu')[0].style.top = event.pageY - posi.top + 'px';
+            $('#rcMenu')[0].style.left = event.pageX - posi.left + 'px';
+            /* console.log(event.target.parentNode.offsetTop); */
+            /* console.log(event.target.parentNode); */
+            //console.log($('#rcMenu')[0].offsetParent); 
+            if ($(event.target).hasClass('ui-draggable') || $(event.target.offsetParent).hasClass('ui-draggable')) {
                 $("#drag")[0].style.display = "";
             } else {
                 $("#drag")[0].style.display = "none";
@@ -29,9 +40,6 @@
             //$('#rcMenu')[0].style.display = 'none';
             //$('#rcMenu').hide('quick');
         }
-
-        //console.log(event.target.parentNode.pageY);
-        // console.log('aaa');
     })
     document.addEventListener('click', () => {
         /* if ($('#rcMenu')[0].parentNode.id) {

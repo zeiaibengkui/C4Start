@@ -26,7 +26,7 @@ body {
   width: -moz-max-content;
   width: max-content;
   max-width: 100px;
-  position: fixed;
+  position: absolute;
   z-index: 1200;
 }
 #rcMenu #drag {
@@ -111,7 +111,9 @@ body {
 #settings > nav > button,
 #settings > nav > span > button {
   float: right;
-  text-shadow: 0 0 6px var(--bs-body-bg);
+  text-shadow: 1px 1px 2px var(--bs-body-bg);
+  /* --bg: color-mix(in srgb, var(--bs-body-bg) 50%, transparent 50%); */
+  /* background-image: radial-gradient(var(--bg) 0%,transparent 50%,transparent 100%); */
   padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
 }
 #settings > form {
@@ -121,7 +123,7 @@ body {
   border-top-left-radius: var(--bs-modal-inner-border-radius);
 }
 #settings > #settingsBox > div.modal-dialog {
-  --bs-modal-width:80vw;
+  --bs-modal-width: 80vw;
 }
 #settings > #settingsBox > div.modal-dialog > div.modal-content {
   width: 100%;
@@ -157,10 +159,10 @@ body {
 #settings > #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox {
   display: flex;
 }
-#settings > #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox td > label {
+#settings > #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox label {
   width: 100%;
 }
-#settings > #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox td > label textarea {
+#settings > #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox label textarea {
   width: 100%;
 }
 #settings > #settingsBox > div.modal-dialog > div.modal-content > .modal-body #searchSetBox #searchSet-Names {

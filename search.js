@@ -1,7 +1,15 @@
 "use strict";
-(function  () {
-    //search
+(function () {
+    //search 
     //import "../library/jquery.js";  //only when coding
+
+    function save() {
+        // 保存用户选择
+        localforage.setItem("sEngines", /* JSON.stringify */(sEngines));
+        localforage.setItem("sEngineNames", /* JSON.stringify */(sEngineNames));
+        localforage.setItem("selectedEngine", selectedEngine);
+    }
+
     let searchTerm = $("#searchTerm")[0];
 
     // 初始化搜索引擎
@@ -17,6 +25,12 @@
         "Baidu"
     ];
     var selectedEngine = 1;
+    localforage.getItem("sEngineNames").then((value) => {
+        if (value) {
+            sEngineNames = value;
+        }
+        $("#searchSet-Names")[0].innerHTML = JSON.stringify(sEngineNames);
+    });
     localforage.getItem("sEngines").then((value) => {
         if (value) {
             sEngines = value;
@@ -34,13 +48,7 @@
             //really terrible
         }
     });
-    localforage.getItem("sEngineNames").then((value) => {
-        if (value) {
-            sEngineNames = value;
-        }
 
-        $("#searchSet-Names")[0].innerHTML = JSON.stringify(sEngineNames);
-    }); //
     localforage.getItem("selectedEngine").then((value) => {
         if (value) {
             selectedEngine = value - 0;
@@ -59,9 +67,16 @@
     document.getElementById("searchSet-btn").addEventListener("click", () => {
         sEngineNames = JSON.parse(document.getElementById("searchSet-Names").value);
         sEngines = JSON.parse(document.getElementById("searchSet-Engines").value);
-        search(true);
+        save();
         //console.log(sEngines);
     });
+    $('#addSearchEngine').on('click', async () => {
+        let name = await swal("Name:", { content: "input", });
+        sEngineNames[sEngineNames.length] = name;
+        let url = await swal("URL: (Replace the word with '%sw%')", { content: "input", });
+        sEngines[sEngines.length] = url.replace("%25sw%25","%sw%");
+        save();
+    })
 
     //选择搜索引擎
     SearchEnginesBox.addEventListener("click", (e) => {
@@ -73,7 +88,7 @@
     });
 
 
-    function search(isPreparing) {
+    function search() {
         //console.log("searh() - callback")
         let searchTerm = $('#searchTerm')[0].value;
         if (searchTerm) {
@@ -81,25 +96,15 @@
             // 获取用户选择的搜索引擎和打开方式
             selectedTarget = $('#starget').value;
 
-            // 保存用户选择
-            localforage.setItem("sEngines", /* JSON.stringify */(sEngines));
-            localforage.setItem("sEngineNames", /* JSON.stringify */(sEngineNames));
-            localforage.setItem("selectedEngine", selectedEngine);
-
             // 创建完整的搜索URL
             let searchURL = sEngines[selectedEngine].replace("%sw%", encodeURIComponent(searchTerm));
+
             //console.log(searchURL);
             // 在选定的打开方式下打开搜索URL
-            if (!isPreparing) {
-                window.open(searchURL, selectedTarget);
-            }
-
+            window.open(searchURL, selectedTarget);
 
         } else {
-            if (!isPreparing) {
-                window.alert("请输入搜索内容!");
-            }
-
+            window.alert("请输入搜索内容!");
         }
     }
 
@@ -126,7 +131,7 @@
     }));
 
 
-    logTime();
+    //logTime();
 
     function logTime() {
         const event = new Date(window.Date());

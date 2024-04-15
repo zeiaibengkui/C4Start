@@ -28,6 +28,9 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <script defer src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
 
+    <!--Vue-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.3.4/vue.global.js"></script>
+
     <!--END CDN-->
 </head>
 
@@ -69,8 +72,7 @@
         <nav class="navbar-nav flex-row flex-wrap ms-md-auto">
 
             <span class="nav-item dropdown">
-                <button class="btn btn-link nav-link" id="bd-theme"
-                    type="button" data-bs-toggle="dropdown">
+                <button class="btn btn-link nav-link" id="bd-theme" type="button" data-bs-toggle="dropdown">
                     <i class="bi bi-brightness-high-fill"></i>
                     <span class="d-lg-none ms-2">切换主题</span>
                 </button>
@@ -96,9 +98,10 @@
                     </li>
                 </ul>
             </span>
+
             <button title="settings" type="button" data-bs-toggle="modal" class="btn nav-link btn-link"
                 data-bs-target="#settingsBox"><i class="bi bi-sliders"></i><span
-                    class="d-lg-none ms-2">切换主题</span></button>
+                    class="d-lg-none ms-2">设置</span></button>
         </nav>
         <!-- settings-box -->
         <div class="modal " id="settingsBox">
@@ -147,28 +150,26 @@
                                 <span id="bg-success"></span>
                             </form>
                             <h2>Search</h2>
-                            <table id="searchSetBox">
-                                <tbody>
-                                    <tr>
-                                        <td class="col-3">
-                                            <label>Engine names:
-                                                <br>
-                                                <textarea class="form-control" id="searchSet-Names"></textarea>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label>Engine urls:<br>
-                                                <textarea class="form-control" id="searchSet-Engines"></textarea>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <button class="btn btn-outline-primary" type="button"
-                                                id="searchSet-btn">应用Search</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                            <div id="searchSetBox" class="row">
+                                <div class="col">
+                                    <label>Engine names:
+                                        <br>
+                                        <textarea class="form-control" id="searchSet-Names"></textarea>
+                                    </label>
+                                </div>
+                                <div class="col">
+                                    <label>Engine urls:<br>
+                                        <textarea class="form-control" id="searchSet-Engines"></textarea>
+                                    </label>
+                                </div>
+
+
+                                <div>
+                                    <button class="btn btn-outline-primary" type="button"
+                                        id="searchSet-btn">应用Search</button>
+                                </div>
+
+                            </div>
                             </table>
                         </span>
                     </div>
